@@ -34,7 +34,10 @@
             ->html();
         ?>
         <a href="?type=<?= $this->data['controllerName'] ?>&action=showadd" class="btn btn-primary">Добавить</a>
-<!--        <button style="float: left" class="btn btn-primary" <a href="?type=sale&action=export"></a>Export to Excel</button><br>-->
+
+        <button id="mezved_to_excel" class="btn btn-primary float-right" onclick="location.href='/public/exporttoexcel/">Export to Excel</button>
+
+        <!--        <button style="float: left" class="btn btn-primary" <a href="?type=sale&action=export"></a>Export to Excel</button><br>-->
     </div>
 </div>
 

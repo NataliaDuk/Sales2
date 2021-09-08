@@ -16,7 +16,41 @@
     </div>
     <div class="container">
         <h1>Продажи. Форма для заполнения.</h1>
+        <button id="mezved_to_excel" class="btn btn-primary" style="margin-left: 1050px" onclick="location.href='/public/">Export to Excel</button><br>
+<br>
+        <?php
+        error_reporting(E_ALL);
+        ini_set('display_errors', 'On');
+        //        require_once('vendor/autoload.php');
 
+        //use PhpOffice\PhpSpreadsheet\Helper\Sample;
+        use PhpOffice\PhpSpreadsheet\IOFactory;
+        use PhpOffice\PhpSpreadsheet\Spreadsheet;
+
+        $sOutFile = 'out.xlsx';
+
+        $oSpreadsheet_Out = new Spreadsheet();
+
+        $oSpreadsheet_Out->getProperties()->setCreator('Maarten Balliauw')
+            ->setLastModifiedBy('Maarten Balliauw')
+            ->setTitle('Office 2007 XLSX Test Document')
+            ->setSubject('Office 2007 XLSX Test Document')
+            ->setDescription('Test document for Office 2007 XLSX, generated using PHP classes.')
+            ->setKeywords('office 2007 openxml php')
+            ->setCategory('Test result file')
+        ;
+
+        // Add some data
+        $oSpreadsheet_Out->setActiveSheetIndex(0)
+            ->setCellValue('A1', 'Привет 555')
+            ->setCellValue('B2', 'world!')
+            ->setCellValue('C1', 'Hello')
+            ->setCellValue('D2', 'world!')
+        ;
+
+        $oWriter = IOFactory::createWriter($oSpreadsheet_Out, 'Xlsx');
+        $oWriter->save($sOutFile);
+        ?>
         <?php
         use W1020\HTML\Pagination;
         use W1020\HTML\Table;
@@ -35,7 +69,6 @@
         ?>
         <a href="?type=<?= $this->data['controllerName'] ?>&action=showadd" class="btn btn-primary">Добавить</a>
 
-        <button id="mezved_to_excel" class="btn btn-primary float-right" onclick="location.href='/public/exporttoexcel/">Export to Excel</button>
 
         <!--        <button style="float: left" class="btn btn-primary" <a href="?type=sale&action=export"></a>Export to Excel</button><br>-->
     </div>

@@ -1,0 +1,118 @@
+body {
+    background: #f5f5f5;
+}
+
+.info {
+    margin-right: 10px;
+    float: left; /*Задаем обтекание*/
+    width: 300px;
+    text-align: center; /*Центрируем текст по горизонтали*/
+}
+
+.container {
+    padding: 10px;
+    float: left; /*Задаем обтекание*/
+}
+
+.navbar {
+    font-size: 20px !important;
+}
+.exit {
+    margin: 0 20px 0;
+}
+
+p {
+    text-indent: 20px; /* Отступ первой строки в пикселах */
+    text-align: left;
+}
+img {
+    width: 30px;
+    height: 30px;
+    display: block;
+    margin: 0 auto;
+}
+.exit {
+    width: 50px;
+    height: 50px;
+    float: left;
+}
+.margin-left {
+    margin-left: 20px !important;
+}
+
+#footer {
+    position: fixed; /* Фиксированное положение */
+    left: 0;
+    bottom: 0; /* Левый нижний угол */
+    padding: 20px; /* Поля вокруг текста */
+    background: #4169e1; /* Цвет фона */
+    color: #fff; /* Цвет текста */
+    width: 100%; /* Ширина слоя */
+}
+
+.alert {
+    width: 1000px;
+    margin: 10px auto 5px;
+    font: italic 160% New Century Schoolbook, TeX Gyre Schola, serif;
+}
+
+.main {
+
+    background-image: url("/public/images/sales/HTB13O_KrpmWBuNjSspdq6zugXXa3.jpg");
+    background-size: 100%;
+    padding: 10px;
+    height: 900px;
+}
+h1 {
+    text-align: center;
+    text-shadow: 3px 1px 3px black;
+    font-family:Arial, Helvetica, sans-serif;
+    font-size: 40pt;
+    color: #4169e1;
+
+}
+h2 {
+    text-align: center; /*Центрируем текст по горизонтали*/
+}
+
+.filter {
+    position: relative;
+    margin-left: 25%;
+    margin-top: 50px;
+    width: 1100px;
+    height: 700px;
+    background: whitesmoke;
+    border-color: #e3e3e3;
+    border-width: 20px;
+    border-style: groove;
+    padding: 10px;
+}
+
+.report {
+    padding: 10px;
+    float: left;
+    text-align: left;
+}
+
+.table {
+    width: 1200px;
+    text-align: center;
+}
+
+.edit {
+    padding: 10px;
+    float: left;
+    text-align: left;
+    margin-left: 500px;
+    font-size: 20px;
+}
+
+.aut {
+    background-image: url("/public/images/sales/1613553900_270-p-delovoi-fon-dlya-prezentatsii-291.jpg");
+    background-size: 100%;
+    padding: 100px;
+    text-align: center;
+    color: blue;
+    font-size: 20px;
+    height: 850px;
+}

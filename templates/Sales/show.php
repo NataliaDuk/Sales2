@@ -19,39 +19,39 @@
         <button id="mezved_to_excel" class="btn btn-primary" style="margin-left: 1050px" onclick="location.href='/public/">Export to Excel</button><br>
 <br>
         <?php
-        error_reporting(E_ALL);
-        ini_set('display_errors', 'On');
-        //        require_once('vendor/autoload.php');
-
-        //use PhpOffice\PhpSpreadsheet\Helper\Sample;
-        use PhpOffice\PhpSpreadsheet\IOFactory;
-        use PhpOffice\PhpSpreadsheet\Spreadsheet;
+//        error_reporting(E_ALL);
+//        ini_set('display_errors', 'On');
+//        //        require_once('vendor/autoload.php');
+//
+//        //use PhpOffice\PhpSpreadsheet\Helper\Sample;
+//        use PhpOffice\PhpSpreadsheet\IOFactory;
+//        use PhpOffice\PhpSpreadsheet\Spreadsheet;
         use W1020\HTML\Pagination;
         use W1020\HTML\Table;
-
-        $sOutFile = 'out.xlsx';
-
-        $oSpreadsheet_Out = new Spreadsheet();
-
-        $oSpreadsheet_Out->getProperties()->setCreator('Maarten Balliauw')
-            ->setLastModifiedBy('Maarten Balliauw')
-            ->setTitle('Office 2007 XLSX Test Document')
-            ->setSubject('Office 2007 XLSX Test Document')
-            ->setDescription('Test document for Office 2007 XLSX, generated using PHP classes.')
-            ->setKeywords('office 2007 openxml php')
-            ->setCategory('Test result file')
-        ;
-
-        // Add some data
-        $oSpreadsheet_Out->setActiveSheetIndex(0)
-            ->setCellValue('A1', 'data')
-            ->setCellValue('B1', 'Предприятие')
-            ->setCellValue('C1', 'Покупатель')
-            ->setCellValue('D1', 'Страна')
-            ->setCellValue('E1', 'Продукция')
-            ->setCellValue('F1', 'Вес, тонн')
-            ->setCellValue('G1', 'Стоимость, тыс.долл.')
-        ;
+//
+//        $sOutFile = 'out.xlsx';
+//
+//        $oSpreadsheet_Out = new Spreadsheet();
+//
+//        $oSpreadsheet_Out->getProperties()->setCreator('Maarten Balliauw')
+//            ->setLastModifiedBy('Maarten Balliauw')
+//            ->setTitle('Office 2007 XLSX Test Document')
+//            ->setSubject('Office 2007 XLSX Test Document')
+//            ->setDescription('Test document for Office 2007 XLSX, generated using PHP classes.')
+//            ->setKeywords('office 2007 openxml php')
+//            ->setCategory('Test result file')
+//        ;
+//
+//        // Add some data
+//        $oSpreadsheet_Out->setActiveSheetIndex(0)
+//            ->setCellValue('A1', 'data')
+//            ->setCellValue('B1', 'Предприятие')
+//            ->setCellValue('C1', 'Покупатель')
+//            ->setCellValue('D1', 'Страна')
+//            ->setCellValue('E1', 'Продукция')
+//            ->setCellValue('F1', 'Вес, тонн')
+//            ->setCellValue('G1', 'Стоимость, тыс.долл.')
+//        ;
 //        $count=2;
 //        foreach ($this->data["comments"] as $row) {
 //
@@ -91,8 +91,8 @@
 //header('Cache-Control: max-age=0');
 //$Excel_writer->save('php://output');
 //
-        $oWriter = IOFactory::createWriter($oSpreadsheet_Out, 'Xlsx');
-        $oWriter->save($sOutFile);
+//        $oWriter = IOFactory::createWriter($oSpreadsheet_Out, 'Xlsx');
+//        $oWriter->save($sOutFile);
 
 
         echo (new Table())

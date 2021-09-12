@@ -3,6 +3,8 @@
         <h3></h3>
         <div class="list-group">
             <button type="button" class="list-group-item list-group-item-action list-group-item-primary" aria-current="true">
+
+
                 <b>Торговые инструменты:</b>
             </button>
             <button type="button" class="list-group-item list-group-item-action"><a href="https://www.nbrb.by/statistics/rates/ratesdaily.asp">Курс белорусского рубля к иностранным валютам (Нацбанк РБ) </a></button>
@@ -17,82 +19,69 @@
     <div class="container">
         <h1>Продажи. Форма для заполнения.</h1>
         <button id="mezved_to_excel" class="btn btn-primary" style="margin-left: 1050px" onclick="location.href='/public/">Export to Excel</button><br>
+<!--        <a class="btn btn-success"  href="--><?//=base_url('sales/spreadsheet_format_download');?><!--" target="_blank">Download Excel Format</a>-->
+<!--        <a class="btn btn-info"  href="?type=sales&action=show" target="_blank">Download Excel Data</a>-->
+<!--        <a class="btn btn-info"  onclick="location.href='/public/" target="_blank">Download Excel Data</a>-->
 <br>
         <?php
-//        error_reporting(E_ALL);
-//        ini_set('display_errors', 'On');
-//        //        require_once('vendor/autoload.php');
-//
-//        //use PhpOffice\PhpSpreadsheet\Helper\Sample;
-//        use PhpOffice\PhpSpreadsheet\IOFactory;
-//        use PhpOffice\PhpSpreadsheet\Spreadsheet;
+        error_reporting(E_ALL);
+        ini_set('display_errors', 'On');
+        //        require_once('vendor/autoload.php');
+
+        //use PhpOffice\PhpSpreadsheet\Helper\Sample;
+        use PhpOffice\PhpSpreadsheet\IOFactory;
+        use PhpOffice\PhpSpreadsheet\Spreadsheet;
         use W1020\HTML\Pagination;
         use W1020\HTML\Table;
-//
-//        $sOutFile = 'out.xlsx';
-//
-//        $oSpreadsheet_Out = new Spreadsheet();
-//
-//        $oSpreadsheet_Out->getProperties()->setCreator('Maarten Balliauw')
-//            ->setLastModifiedBy('Maarten Balliauw')
-//            ->setTitle('Office 2007 XLSX Test Document')
-//            ->setSubject('Office 2007 XLSX Test Document')
-//            ->setDescription('Test document for Office 2007 XLSX, generated using PHP classes.')
-//            ->setKeywords('office 2007 openxml php')
-//            ->setCategory('Test result file')
-//        ;
-//
-//        // Add some data
-//        $oSpreadsheet_Out->setActiveSheetIndex(0)
-//            ->setCellValue('A1', 'data')
-//            ->setCellValue('B1', 'Предприятие')
-//            ->setCellValue('C1', 'Покупатель')
-//            ->setCellValue('D1', 'Страна')
-//            ->setCellValue('E1', 'Продукция')
+
+
+        $sOutFile = 'out.xlsx';
+
+        $oSpreadsheet_Out = new Spreadsheet();
+
+        $oSpreadsheet_Out->getProperties()->setCreator('Maarten Balliauw')
+            ->setLastModifiedBy('Maarten Balliauw')
+            ->setTitle('Office 2007 XLSX Test Document')
+            ->setSubject('Office 2007 XLSX Test Document')
+            ->setDescription('Test document for Office 2007 XLSX, generated using PHP classes.')
+            ->setKeywords('office 2007 openxml php')
+            ->setCategory('Test result file')
+        ;
+
+////        // Add some data
+        $oSpreadsheet_Out->setActiveSheetIndex(0)
+            ->setCellValue('A1', 'data')
+            ->setCellValue('B1', 'Предприятие')
+            ->setCellValue('C1', 'Покупатель')
+            ->setCellValue('D1', 'Страна')
+            ->setCellValue('E1', 'Продукция')
 //            ->setCellValue('F1', 'Вес, тонн')
 //            ->setCellValue('G1', 'Стоимость, тыс.долл.')
-//        ;
-//        $count=2;
-//        foreach ($this->data["comments"] as $row) {
-//
-//            $oSpreadsheet_Out->setActiveSheetIndex(0)
-//                ->setCellValue('A' . $count, $row['data']);
-////            ->setCellValue('B1', 'Предприятие')
-////            ->setCellValue('C1', 'Покупатель')
-////            ->setCellValue('D1', 'Страна')
-////            ->setCellValue('E1', 'Продукция')
-////            ->setCellValue('F1', 'Вес, тонн')
-////            ->setCellValue('G1', 'Стоимость, тыс.долл.')
-//        $count++;
-//        }
         ;
-//        use PhpOfficePhpSpreadsheetSpreadsheet;
-//        use PhpOfficePhpSpreadsheetWriterXlsx;
-//        $spreadsheet = new Spreadsheet();
-//        $Excel_writer = new Xlsx($spreadsheet);
-//        $spreadsheet->setActiveSheetIndex(0);
-//        $activeSheet = $spreadsheet->getActiveSheet();
-//        $activeSheet->setCellValue('A1', 'Product Name');
-//        $activeSheet->setCellValue('B1', 'Product SKU');
-//        $activeSheet->setCellValue('C1', 'Product Price');
 
-//        if($sql->num_rows > 0) {
-//            $i = 2;
-//            while ($row = $sql->fetch_assoc()) {
-//                $activeSheet->setCellValue('A' . $i, $this->data["row"]['user_groups_id']);
-//                $activeSheet->setCellValue('B' . $i, $row['product_sku']);
-//                $i++;
-//            }
-//        }
-//        $filename = 'products.xlsx';
-//
+        $count=2;
+        foreach ($getlist as $row) {
+
+            $oSpreadsheet_Out->setActiveSheetIndex(0)
+                ->setCellValue('A' . $count, $row->data)
+            ->setCellValue('B'. $count, $row->users_id)
+            ->setCellValue('C'. $count, $row->customers_id)
+            ->setCellValue('D'. $count, $row->countries_id)
+            ->setCellValue('E' . $count, $row->produkt_id);
+//            ->setCellValue('F1', 'Вес, тонн')
+//            ->setCellValue('G1', 'Стоимость, тыс.долл.')
+        $count++;
+        }
+
+        $filename = 'products.xlsx';
+
 //header('Content-Type: application/vnd.ms-excel');
 //header('Content-Disposition: attachment;filename='. $filename);
 //header('Cache-Control: max-age=0');
 //$Excel_writer->save('php://output');
-//
-//        $oWriter = IOFactory::createWriter($oSpreadsheet_Out, 'Xlsx');
-//        $oWriter->save($sOutFile);
+
+        $oWriter = IOFactory::createWriter($oSpreadsheet_Out, 'Xlsx');
+        $oWriter->save($sOutFile);
 
 
         echo (new Table())

@@ -84,5 +84,13 @@ SQL;
         return $arr;
     }
 
-//    public function getFormCountries();
+    public function getList(): array
+    {
+        $data = $this->query("SELECT (*) FROM `$this->tableName`");
+        $arr = [];
+        foreach ($data as $row) {
+            $arr[$row['id']] = $row['name'];
+        }
+        return $arr;
+    }
 }

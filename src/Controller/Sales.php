@@ -85,7 +85,7 @@ class Sales extends Table
     {
         $getlist=$this->model->getList();
         header("Content-type: application/vnd.ms-excel; name='excel'");
-        header("Content-Disposition: attachment; filename=exportfile.xls");
+        header("Content-Disposition: attachment; filename='exportfile.xls'");
         header("Pragma: no-cache");
         header("Expires: 0");
         $spreadsheet = new Spreadsheet();
@@ -97,22 +97,22 @@ class Sales extends Table
         $sheet->setCellValue('E1', 'Продукция');
         $sheet->setCellValue('F1', 'Вес, тонн');
         $sheet->setCellValue('G1', 'Стоимость, тыс.долл.');
-        $count=2;
-        foreach ($getlist as $row) {
-
-            $sheet->setCellValue('A' . $count, $row->data);
-            $sheet->setCellValue('B' . $count, $row->users_id);
-            $sheet->setCellValue('C' . $count, $row->customers_id);
-            $sheet->setCellValue('D' . $count, $row->countries_id);
-            $sheet->setCellValue('E' . $count, $row->produkt_id);
-//            ->setCellValue('B1', 'Предприятие')
-//            ->setCellValue('C1', 'Покупатель')
-//            ->setCellValue('D1', 'Страна')
-//            ->setCellValue('E1', 'Продукция')
-//            ->setCellValue('F1', 'Вес, тонн')
-//            ->setCellValue('G1', 'Стоимость, тыс.долл.')
-        $count++;
-        }
+//        $count=2;
+//        foreach ($this->data["table"] as $key => $row) {
+//
+//            $sheet->setCellValue('A' . $count, $row->data);
+//            $sheet->setCellValue('B' . $count, $row->users_id);
+//            $sheet->setCellValue('C' . $count, $row->customers_id);
+//            $sheet->setCellValue('D' . $count, $row->countries_id);
+//            $sheet->setCellValue('E' . $count, $row->produkt_id);
+////            ->setCellValue('B1', 'Предприятие')
+////            ->setCellValue('C1', 'Покупатель')
+////            ->setCellValue('D1', 'Страна')
+////            ->setCellValue('E1', 'Продукция')
+////            ->setCellValue('F1', 'Вес, тонн')
+////            ->setCellValue('G1', 'Стоимость, тыс.долл.')
+//        $count++;
+//        }
         $writer = new Xlsx($spreadsheet);
         $writer->save('php://output');
     }

@@ -17,7 +17,7 @@ class SalesModel extends ORMTable
         $sql = <<<SQL
 SELECT
     `sale`.`id`,
-     DATE_FORMAT(`sale`.`data`, '%d.%m.%Y'),
+     DATE_FORMAT(`sale`.`data`, '%d.%m.%Y') AS `data`,
      `users`.`name` AS `users_id`,
     `customers`.`name` AS `customers_id`,
     `countries`.`name` AS `countries_id`,

@@ -20,22 +20,17 @@ class SalesReportModel extends ORMTable
 SELECT
     DATE_FORMAT(`sale`.`data`, '%m_%Y') AS MONTH_YEAR,
     `users`.`name` AS users_id,
---     `produkt`.`name` AS `produkt_id1`,
---     SUM(`weight`) AS weight,
     SUM(`cost`) AS cost
 FROM
     `sale`,
     `users`
---     `produkt`
 WHERE
     `sale`.`users_id` = `users`.`id` 
---     AND `sale`.`produkt_id1` = `produkt`.`id` 
     AND 
       `data` >= '$startData' AND `data` <= '$endData'
 GROUP BY
 DATE_FORMAT(`sale`.`data`, '%m_%Y'),
     `users`.`name`
---     `produkt`.`name`
 
 ORDER BY
          MONTH_YEAR,

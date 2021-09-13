@@ -1,9 +1,9 @@
 <div class="container">
     <div class="row">
-        <div class="col">
+        <div class="col-12 col-sm-12 col-md-4 col-lg-2 col-xl-2">
 
         </div>
-        <div class="col-3 edit">
+        <div class="col-12 col-sm-12 col-md-4 col-lg-8 col-xl-8 edit">
             <?php
             //print_r($this->data);
             use W1020\HTML\Select; ?>
@@ -49,7 +49,7 @@
                 <input type="submit" value="ok" class="btn btn-primary">
             </form>
         </div>
-        <div class="col">
+        <div class="col-12 col-sm-12 col-md-4 col-lg-2 col-xl-2">
 
         </div>
     </div>

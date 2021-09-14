@@ -5,6 +5,13 @@ namespace App\Controller;
 use App\Model\SalesModel;
 use PhpOffice\PhpSpreadsheet\Spreadsheet;
 use PhpOffice\PhpSpreadsheet\Writer\Xlsx;
+                        error_reporting(E_ALL);
+                        ini_set('display_errors', 'On');
+                        //        require_once('vendor/autoload.php');
+
+                        use PhpOffice\PhpSpreadsheet\Helper\Sample;
+                        use PhpOffice\PhpSpreadsheet\IOFactory;
+
 
 
 class Sales extends Table
@@ -77,45 +84,59 @@ class Sales extends Table
 //        $writer = new Xlsx($spreadsheet);
 //        $writer = save("php//output");
 //    }
-
-    /**
-     * @throws \PhpOffice\PhpSpreadsheet\Writer\Exception
-     */
-    public function spreadsheet_export()
+    public function actionExport(): void
     {
-        $getlist=$this->model->getList();
-        header("Content-type: application/vnd.ms-excel; name='excel'");
-        header("Content-Disposition: attachment; filename='exportfile.xls'");
-        header("Pragma: no-cache");
-        header("Expires: 0");
-        $spreadsheet = new Spreadsheet();
-        $sheet = $spreadsheet->getActiveSheet();
-        $sheet->setCellValue('A1', 'data');
-        $sheet->setCellValue('B1', 'gредприятие');
-        $sheet->setCellValue('C1', 'Покупатель');
-        $sheet->setCellValue('D1', 'Страна');
-        $sheet->setCellValue('E1', 'Продукция');
-        $sheet->setCellValue('F1', 'Вес, тонн');
-        $sheet->setCellValue('G1', 'Стоимость, тыс.долл.');
-//        $count=2;
-//        foreach ($this->data["table"] as $key => $row) {
+//        $this->view->addData(["table" =>$this->model->getList()]);
+//->setTemplate("Sales/show");
+//        $getlist=$this->model->getList();
 //
-//            $sheet->setCellValue('A' . $count, $row->data);
-//            $sheet->setCellValue('B' . $count, $row->users_id);
-//            $sheet->setCellValue('C' . $count, $row->customers_id);
-//            $sheet->setCellValue('D' . $count, $row->countries_id);
-//            $sheet->setCellValue('E' . $count, $row->produkt_id);
-////            ->setCellValue('B1', 'Предприятие')
-////            ->setCellValue('C1', 'Покупатель')
-////            ->setCellValue('D1', 'Страна')
-////            ->setCellValue('E1', 'Продукция')
-////            ->setCellValue('F1', 'Вес, тонн')
-////            ->setCellValue('G1', 'Стоимость, тыс.долл.')
-//        $count++;
-//        }
-        $writer = new Xlsx($spreadsheet);
-        $writer->save('php://output');
+//        $sOutFile = 'out.xlsx';
+        header("Content-type: application/vnd.ms-excel");
+        header("Content-Disposition: attachment; filename=exportfile.xlsx");
+        $oSpreadsheet_Out = new Spreadsheet();
+        $oSpreadsheet_Out->setActiveSheetIndex(0)
+                ->setCellValue('A1', 'Дата')
+                ->setCellValue('B1', 'Предприятие')
+                ->setCellValue('С1', 'Покупатель')
+                ->setCellValue('D1', 'Стоимость, тыс.долл.');
+//
+//        header("Pragma: no-cache");
+//        header("Expires: 0");
+//        $spreadsheet = new Spreadsheet();
+//        $sheet = $spreadsheet->getActiveSheet();
+//        $sheet->setCellValue('A1', 'data');
+//        $sheet->setCellValue('B1', 'предприятие');
+//        $sheet->setCellValue('C1', 'Покупатель');
+//        $sheet->setCellValue('D1', 'Страна');
+//        $sheet->setCellValue('E1', 'Продукция');
+//        $sheet->setCellValue('F1', 'Вес, тонн');
+//        $sheet->setCellValue('G1', 'Стоимость, тыс.долл.');
+//        $count=2;
+////        foreach ($this->data as $key => $row) {
+////
+////            $sheet->setCellValue('A' . $count, $row['data']);
+////            $sheet->setCellValue('B' . $count, $row['users_id']);
+////            $sheet->setCellValue('C' . $count, $row['customers_id']);
+////            $sheet->setCellValue('D' . $count, $row['countries_id']);
+////            $sheet->setCellValue('E' . $count, $row['produkt_id']);
+////            $sheet->setCellValue('F' . $count, $row['weight']);
+////            $sheet->setCellValue('G' . $count, $row['cost']);
+////            $count++;
+////        }
+//        $writer = new Xlsx($spreadsheet);
+//        $Excel_writer->save('php://output');
+////
+            $oWriter = IOFactory::createWriter($oSpreadsheet_Out, 'Xlsx');
+            $oWriter->save('php://output');
+//        $writer->save('php://output');
+//    }
+//    /**
+//     * @throws \PhpOffice\PhpSpreadsheet\Writer\Exception
+//     */
+//    public function spreadsheet_export()
+//    {
+//        $getlist=$this->model->getList();
+
+
     }
-
-
 }

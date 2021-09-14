@@ -63,7 +63,12 @@
             <a href="?type=<?= $this->data['controllerName'] ?>&action=showadd" class="btn btn-primary">Добавить</a>
 
 
-            <!--        <button style="float: left" class="btn btn-primary" <a href="?type=sale&action=export"></a>Export to Excel</button><br>-->
+<!--                    <button style="float: left" class="btn btn-primary" <a href="?type=sale&action=export"></a>Export to Excel</button><br>-->
+            <a class="btn btn-info"  href="?type=sales&action=export" target="_blank">Download Excel Data</a>
+            <?php
+
+
+            ?>
         </div>
     </div>
 </div>

@@ -9,7 +9,7 @@
             use W1020\HTML\Pagination;
             use W1020\HTML\Table;
 
-            foreach ($this->data["table"] as print_r$row) {
+            foreach ($this->data["table"] as $row) {
                 $row['pass'] = '🔑🔑🔑';
             }
             echo (new Table())

@@ -84,13 +84,32 @@ SQL;
         return $arr;
     }
 
-    public function getList(): array
-    {
-        $data = $this->query("SELECT (*) FROM `$this->tableName`");
-        $arr = [];
-        foreach ($data as $row) {
-            $arr[$row['id']] = $row['name'];
-        }
-        return $arr;
-    }
+
+public function getList(): array
+{
+    $sql = <<<SQL
+SELECT
+    `sale`.`id`,
+     DATE_FORMAT(`sale`.`data`, '%d.%m.%Y') AS `data`,
+     `users`.`name` AS `users_id`,
+    `customers`.`name` AS `customers_id`,
+    `countries`.`name` AS `countries_id`,
+    `produkt`.`name` AS `produkt_id1`,
+    `sale`.`weight`,
+    `sale`.`cost`
+FROM
+    `sale`,
+     `users`,
+     `customers`,
+     `countries`,
+    `produkt`
+WHERE
+    `users`.`id` = `sale`.`users_id` AND `sale`.`countries_id` = `countries`.`id` AND `sale`.`produkt_id1` = `produkt`.`id` AND `customers`.`id` = `sale`.`customers_id`
+ORDER BY `sale`.`data`
+SQL;
+
+    return $this->query($sql);
+
+}
+
 }

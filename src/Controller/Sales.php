@@ -6,6 +6,7 @@ use App\Model\SalesModel;
 use PhpOffice\PhpSpreadsheet\Spreadsheet;
 use PhpOffice\PhpSpreadsheet\Writer\Xlsx;
 use PhpOffice\PhpSpreadsheet\Shared\Date;
+
 //error_reporting(E_ALL);
 //ini_set('display_errors', 'On');
 
@@ -70,32 +71,12 @@ class Sales extends Table
     }
 
 
-
     public function actionExport(): void
     {
-//        $this->view->addData(["table" => $this->model->getList()]);
-//        ->setTemplate("Sales/show");
-        $getlist=$this->model->getList();
-//
-        $sOutFile = 'out.xlsx';
+
+        $getlist = $this->model->getList();
         header("Content-type: application/vnd.ms-excel");
         header("Content-Disposition: attachment; filename=exportfile.xls");
-//        header("Pragma: no-cache");
-//        header("Expires: 0");
-//        $oSpreadsheet_Out = new Spreadsheet();
-//    $oSpreadsheet_Out->getProperties()->setCreator('Maarten Balliauw')
-//        ->setLastModifiedBy('Maarten Balliauw')
-//        ->setTitle('Office 2007 XLSX Test Document')
-//        ->setSubject('Office 2007 XLSX Test Document')
-//        ->setDescription('Test document for Office 2007 XLSX, generated using PHP classes.')
-//        ->setKeywords('office 2007 openxml php')
-//        ->setCategory('Test result file');
-//        $oSpreadsheet_Out->setActiveSheetIndex(0)
-//            ->setCellValue('A1', 'Дата')
-//            ->setCellValue('B1', 'Предприятие')
-//            ->setCellValue('С1', 'Покупатель')
-//            ->setCellValue('D1', 'Стоимость, тыс.долл.');
-//
 
         $spreadsheet = new Spreadsheet();
         $sheet = $spreadsheet->getActiveSheet();
@@ -107,36 +88,20 @@ class Sales extends Table
         $sheet->setCellValue('F1', 'Вес, тонн');
         $sheet->setCellValue('G1', 'Стоимость, тыс.долл.');
         $count = 2;
-        $date = $oCells->get('A'.$iRow)->getValue();
-        $date = Date::excelToTimestamp($date);
-        $date = date('d.m.Y', $date);
 
         foreach ($getlist as $row) {
-//            $sheet->setCellValue('A' . $count, $row['data']);
+            $sheet->setCellValue('A' . $count, $row['data']);
             $sheet->setCellValue('B' . $count, $row['users_id']);
             $sheet->setCellValue('C' . $count, $row['customers_id']);
             $sheet->setCellValue('D' . $count, $row['countries_id']);
-//            $sheet->setCellValue('E' . $count, $row['produkt_id']);
+            $sheet->setCellValue('E' . $count, $row['produkt_id1']);
             $sheet->setCellValue('F' . $count, $row['weight']);
             $sheet->setCellValue('G' . $count, $row['cost']);
             $count++;
         }
 
-//        $writer = new Xlsx($spreadsheet);
-//        $Excel_writer->save('php://output');
-////
         $oWriter = IOFactory::createWriter($spreadsheet, 'Xls');
         $oWriter->save('php://output');
-//        $oWriter->save($sOutFile);
-//        $writer->save('php://output');
-//    }
-//    /**
-//     * @throws \PhpOffice\PhpSpreadsheet\Writer\Exception
-//     */
-//    public function spreadsheet_export()
-//    {
-//        $getlist=$this->model->getList();
-
-
     }
+
 }

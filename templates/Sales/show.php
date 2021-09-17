@@ -37,7 +37,7 @@
             <h1>Продажи. Форма для заполнения.</h1>
 
             <br>
-            <!--        <a class="btn btn-success"  href="-->
+            <!--        <a class="btn "  href="-->
             <? //=base_url('sales/spreadsheet_format_download');?><!--" target="_blank">Download Excel Format</a>-->
             <!--        <a class="btn btn-info"  href="?type=sales&action=show" target="_blank">Download Excel Data</a>-->
             <!--        <a class="btn btn-info"  onclick="location.href='/public/" target="_blank">Download Excel Data</a>-->

@@ -16,6 +16,7 @@ use W1020\HTML\Table;
             <h2>за период с <?= date("d.m.Y", strtotime($_POST['startdata'])); ?>
                 по <?= date("d.m.Y", strtotime($_POST['enddata'])); ?></h2>
 
+                        <a class="btn btn-success"  href="?type=salesreport&action=exportfilter" target="_blank">Export to Excel</a>
 
             <?php
 
@@ -74,8 +75,7 @@ use W1020\HTML\Table;
 ////            $oWriter = IOFactory::createWriter($oSpreadsheet_Out, 'Xlsx');
 ////            $oWriter->save($sOutFile);
 //            ?>
-<!--               <button class="btn btn-primary" onclick="location.href='/public/">Export to Excel</button>-->
-<!--            <button class="btn btn-primary" onclick="location.href='/public/">Export to Excel</button>-->
+
         </div>
         <div class="col-12 col-sm-12 col-md-4 col-lg-2 col-xl-2">
 
